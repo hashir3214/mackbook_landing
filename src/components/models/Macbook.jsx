@@ -1,14 +1,11 @@
 
-
 import React, {useEffect} from 'react'
 import {useGLTF, useVideoTexture} from '@react-three/drei'
 import useMacbookStore from "../../store/index.js";
 import {noChangeParts} from "../../constants/index.js";
-import {Color, MeshBasicMaterial} from "three";
-import { textureBarrier } from 'three/src/nodes/gpgpu/BarrierNode.js';
 
 
-export default function Model(props) {
+export default function MacbookModel(props) {
   const { color, texture } = useMacbookStore();
   const { nodes, materials, scene } = useGLTF('/models/macbook-transformed.glb')
   const screen = useVideoTexture(texture)
@@ -17,7 +14,7 @@ export default function Model(props) {
       scene.traverse((child) => {
         if(child.isMesh) {
           if(!noChangeParts.includes(child.name)) {
-            child.material.color = new THREE.Color(color);
+            child.material.color.set(color);
   
           }
         }
@@ -44,7 +41,7 @@ export default function Model(props) {
       <mesh geometry={nodes.Object_96.geometry} material={materials.PaletteMaterial003} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_107.geometry} material={materials.JvMFZolVCdpPqjj} rotation={[Math.PI / 2, 0, 0]} />
       <mesh geometry={nodes.Object_123.geometry} rotation={[Math.PI / 2, 0, 0]} >
-      <MeshBasicMaterial map={screen} />
+      <meshBasicMaterial map={screen} />
 
 
       </mesh>
