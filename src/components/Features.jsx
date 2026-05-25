@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import React from 'react'
 import StudioLights from './three/StudioLights'
 import { features } from '../constants'
+import clsx from 'clsx'
 
 const Features = () => {
   return (
