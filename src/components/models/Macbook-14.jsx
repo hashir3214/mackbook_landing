@@ -49,3 +49,4 @@ export default function MacbookModel14(props) {
 }
 
 useGLTF.preload('/models/macbook-14-transformed.glb')
+useTexture.preload('/screen.png')
